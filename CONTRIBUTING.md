@@ -24,13 +24,15 @@ is required after configuration. See [npm trusted publishing](https://docs.npmjs
 1. Update `package.json` and CHANGELOG.md.
 2. Run all README checks, including the publication dry run.
 3. Commit and push the reviewed changes.
-4. Create and push a stable tag matching the manifest, for example `0.0.2`.
+4. Create a GitHub Release with a tag matching the manifest, for example `0.0.2`,
+   then publish the release.
 
-The `release.yml` workflow runs CI before publication and rejects a mismatched
-version tag. Only stable `MAJOR.MINOR.PATCH` tags are supported. Pushing such a tag
-publishes the package after registry setup; creating a GitHub Release is optional.
-The initial 0.0.1 bootstrap publication is a manual owner step, so start automated
-tags at the next version. Do not reuse an already-published version.
+The `release.yml` workflow starts when a GitHub Release is published, runs CI
+before npm publication, and rejects a release tag that differs from the package
+version. Pushing a tag alone does not publish to npm. Use a version without a
+`v` prefix and publish stable releases to the npm `latest` channel.
+The initial 0.0.1 version was published manually; use the workflow for subsequent
+versions. Do not reuse an already-published version.
 
 Registry account setup and actual publication are separate from local package
 creation. No credentials belong in this repository.
