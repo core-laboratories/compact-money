@@ -1,0 +1,71 @@
+{
+	"name": "compact-money",
+	"version": "0.0.1",
+	"description": "Compact monetary amounts into structured financial units with optional currency metadata.",
+	"license": "SEE LICENSE IN LICENSE",
+	"type": "module",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.js"
+			},
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			}
+		}
+	},
+	"files": [
+		"dist",
+		"README.md",
+		"LICENSE"
+	],
+	"sideEffects": false,
+	"engines": {
+		"node": ">=22"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/core-laboratories/compact-money.git"
+	},
+	"homepage": "https://github.com/core-laboratories/compact-money#readme",
+	"bugs": {
+		"url": "https://github.com/core-laboratories/compact-money/issues"
+	},
+	"keywords": [
+		"money",
+		"currency",
+		"finance",
+		"compact",
+		"typescript"
+	],
+	"scripts": {
+		"build": "tsup",
+		"test": "npm run build:test && node --test .test-dist/tests/*.test.js",
+		"test:coverage": "npm run build:test && node --test --experimental-test-coverage --test-coverage-include=\".test-dist/src/**/*.js\" --test-coverage-lines=100 --test-coverage-functions=100 --test-coverage-branches=100 .test-dist/tests/*.test.js",
+		"lint": "eslint .",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"typecheck": "tsc --noEmit",
+		"prepack": "npm run build",
+		"check": "npm run typecheck && npm run lint && npm run format:check && npm run test:coverage && npm run build",
+		"test:package": "node scripts/test-package.mjs",
+		"build:test": "node -e \"require('node:fs').rmSync('.test-dist', { recursive: true, force: true })\" && tsc -p tsconfig.test.json"
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"@types/node": "^22.19.0",
+		"eslint": "^10.10.0",
+		"prettier": "^3.7.0",
+		"tsup": "^8.5.0",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.70.0"
+	},
+	"overrides": {
+		"esbuild": "^0.28.2"
+	}
+}
