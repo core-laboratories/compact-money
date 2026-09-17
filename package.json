@@ -1,6 +1,6 @@
 {
 	"name": "compact-money",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"description": "Compact monetary amounts into structured financial units with optional currency metadata.",
 	"license": "SEE LICENSE IN LICENSE",
 	"type": "module",
@@ -58,11 +58,11 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
-		"@types/node": "^22.19.0",
+		"@types/node": "^22.20.3",
 		"eslint": "^10.10.0",
-		"prettier": "^3.7.0",
-		"tsup": "^8.5.0",
-		"typescript": "^5.9.3",
+		"prettier": "^3.9.7",
+		"tsup": "^8.5.1",
+		"typescript": "^6.0.3",
 		"typescript-eslint": "^8.70.0"
 	},
 	"overrides": {
